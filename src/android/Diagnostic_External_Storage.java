@@ -156,7 +156,7 @@ public class Diagnostic_External_Storage extends CordovaPlugin{
             if(checkCanRead(f)){
                 detail.put("path", directory);
                 detail.put("filePath", "file://"+directory);
-                detail.put("canWrite", f.canWrite());
+                detail.put("canWrite", checkCanWrite(f));
                 detail.put("freeSpace", getFreeSpaceInBytes(directory));
                 if(directory.contains("Android")){
                     detail.put("type", "application");
