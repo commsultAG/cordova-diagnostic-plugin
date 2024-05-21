@@ -2,13 +2,13 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova.plugins.diagnostic"
-    version="6.1.1">
+    version="7.1.4">
 
     <name>Diagnostic</name>
     <description>Cordova/Phonegap plugin to check the state of Location/WiFi/Camera/Bluetooth device settings.</description>
     <author>Dave Alden</author>
     <license>MIT</license>
-    <keywords>ecosystem:cordova,cordova,phonegap,android,ios,windows,diagnostic,wifi,location,gps,camera,bluetooth,settings</keywords>
+    <keywords>ecosystem:cordova,cordova,phonegap,android,ios,diagnostic,wifi,location,gps,camera,bluetooth,settings</keywords>
     <engines>
         <engine name="cordova" version=">=9.0.0"/>
         <engine name="cordova-android" version=">=8.0.0"/>
@@ -32,7 +32,7 @@
         <header-file src="src/ios/Diagnostic.h" />
         <source-file src="src/ios/Diagnostic.m" />
 
-        <!--BEGIN_MODULE LOCATION-->
+        <!--BEGIN_MODULE LOCATION--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Location">
                 <param name="ios-package" value="Diagnostic_Location" />
@@ -60,9 +60,9 @@
         <config-file target="*-Info.plist" parent="NSLocationAlwaysUsageDescription" comment="iOS 10">
             <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
         </config-file>
-        <!--END_MODULE LOCATION-->
+        --><!--END_MODULE LOCATION-->
 
-        <!--BEGIN_MODULE BLUETOOTH-->
+        <!--BEGIN_MODULE BLUETOOTH--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Bluetooth">
                 <param name="ios-package" value="Diagnostic_Bluetooth" />
@@ -86,9 +86,9 @@
         <config-file target="*-Info.plist" parent="NSBluetoothAlwaysUsageDescription">
             <string>This app requires constant Bluetooth access to function properly.</string>
         </config-file>
-        <!--END_MODULE BLUETOOTH-->
+        --><!--END_MODULE BLUETOOTH-->
 
-        <!--BEGIN_MODULE WIFI-->
+        <!--BEGIN_MODULE WIFI--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Wifi">
                 <param name="ios-package" value="Diagnostic_Wifi" />
@@ -102,7 +102,7 @@
 
         <header-file src="src/ios/Diagnostic_Wifi.h" />
         <source-file src="src/ios/Diagnostic_Wifi.m" />
-        <!--END_MODULE WIFI-->
+        --><!--END_MODULE WIFI-->
 
         <!--BEGIN_MODULE CAMERA-->
         <config-file target="config.xml" parent="/*">
@@ -117,6 +117,7 @@
         </js-module>
 
         <framework src="Photos.framework" />
+        <framework src="PhotosUI.framework" />
         <framework src="AVFoundation.framework" />
 
         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
@@ -131,7 +132,7 @@
         <source-file src="src/ios/Diagnostic_Camera.m" />
         <!--END_MODULE CAMERA-->
 
-        <!--BEGIN_MODULE NOTIFICATIONS-->
+        <!--BEGIN_MODULE NOTIFICATIONS--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Notifications">
                 <param name="ios-package" value="Diagnostic_Notifications" />
@@ -147,9 +148,9 @@
 
         <header-file src="src/ios/Diagnostic_Notifications.h" />
         <source-file src="src/ios/Diagnostic_Notifications.m" />
-        <!--END_MODULE NOTIFICATIONS-->
+        --><!--END_MODULE NOTIFICATIONS-->
 
-        <!--BEGIN_MODULE MICROPHONE-->
+        <!--BEGIN_MODULE MICROPHONE--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Microphone">
                 <param name="ios-package" value="Diagnostic_Microphone" />
@@ -169,9 +170,9 @@
 
         <header-file src="src/ios/Diagnostic_Microphone.h" />
         <source-file src="src/ios/Diagnostic_Microphone.m" />
-        <!--END_MODULE MICROPHONE-->
+        --><!--END_MODULE MICROPHONE-->
 
-        <!--BEGIN_MODULE CONTACTS-->
+        <!--BEGIN_MODULE CONTACTS--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Contacts">
                 <param name="ios-package" value="Diagnostic_Contacts" />
@@ -192,9 +193,9 @@
 
         <header-file src="src/ios/Diagnostic_Contacts.h" />
         <source-file src="src/ios/Diagnostic_Contacts.m" />
-        <!--END_MODULE CONTACTS-->
+        --><!--END_MODULE CONTACTS-->
 
-        <!--BEGIN_MODULE CALENDAR-->
+        <!--BEGIN_MODULE CALENDAR--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Calendar">
                 <param name="ios-package" value="Diagnostic_Calendar" />
@@ -214,9 +215,9 @@
 
         <header-file src="src/ios/Diagnostic_Calendar.h" />
         <source-file src="src/ios/Diagnostic_Calendar.m" />
-        <!--END_MODULE CALENDAR-->
+        --><!--END_MODULE CALENDAR-->
 
-        <!--BEGIN_MODULE REMINDERS-->
+        <!--BEGIN_MODULE REMINDERS--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Reminders">
                 <param name="ios-package" value="Diagnostic_Reminders" />
@@ -236,9 +237,9 @@
         
         <header-file src="src/ios/Diagnostic_Reminders.h" />
         <source-file src="src/ios/Diagnostic_Reminders.m" />
-        <!--END_MODULE REMINDERS-->
+        --><!--END_MODULE REMINDERS-->
 
-        <!--BEGIN_MODULE MOTION-->
+        <!--BEGIN_MODULE MOTION--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Motion">
                 <param name="ios-package" value="Diagnostic_Motion" />
@@ -258,7 +259,7 @@
 
         <header-file src="src/ios/Diagnostic_Motion.h" />
         <source-file src="src/ios/Diagnostic_Motion.m" />
-        <!--END_MODULE MOTION-->
+        --><!--END_MODULE MOTION-->
     </platform>
 
     <platform name="android">
@@ -280,7 +281,7 @@
         <framework src="androidx.legacy:legacy-support-v4:$ANDROIDX_VERSION" />
         <framework src="androidx.appcompat:appcompat:$ANDROIDX_APPCOMPAT_VERSION" />
 
-        <!--BEGIN_MODULE LOCATION-->
+        <!--BEGIN_MODULE LOCATION--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Location" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_Location"/>
@@ -293,9 +294,9 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_Location.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE LOCATION-->
+        --><!--END_MODULE LOCATION-->
 
-        <!--BEGIN_MODULE BLUETOOTH-->
+        <!--BEGIN_MODULE BLUETOOTH--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Bluetooth" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_Bluetooth"/>
@@ -312,9 +313,9 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_Bluetooth.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE BLUETOOTH-->
+        --><!--END_MODULE BLUETOOTH-->
 
-        <!--BEGIN_MODULE WIFI-->
+        <!--BEGIN_MODULE WIFI--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Wifi" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_Wifi"/>
@@ -327,7 +328,7 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_Wifi.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE WIFI-->
+        --><!--END_MODULE WIFI-->
 
         <!--BEGIN_MODULE CAMERA-->
         <config-file target="config.xml" parent="/*">
@@ -344,22 +345,7 @@
         <source-file src="src/android/Diagnostic_Camera.java" target-dir="src/cordova/plugins" />
         <!--END_MODULE CAMERA-->
 
-        <!--BEGIN_MODULE AIRPLANE_MODE-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Airplane_Mode" >
-                <param name="android-package" value="cordova.plugins.Diagnostic_Airplane_Mode"/>
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <js-module name="Diagnostic_Airplane_Mode" src="www/android/diagnostic.airplane_mode.js">
-            <merges target="cordova.plugins.diagnostic.airplane_mode" />
-        </js-module>
-
-        <source-file src="src/android/Diagnostic_Airplane_Mode.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE AIRPLANE_MODE-->
-
-        <!--BEGIN_MODULE NOTIFICATIONS-->
+        <!--BEGIN_MODULE NOTIFICATIONS--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_Notifications" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_Notifications"/>
@@ -372,27 +358,27 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_Notifications.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE NOTIFICATIONS-->
+        --><!--END_MODULE NOTIFICATIONS-->
 
-        <!--BEGIN_MODULE MICROPHONE-->
+        <!--BEGIN_MODULE MICROPHONE--><!--
         <js-module name="Diagnostic_Microphone" src="www/android/diagnostic.microphone.js">
             <merges target="cordova.plugins.diagnostic.microphone" />
         </js-module>
-        <!--END_MODULE MICROPHONE-->
+        --><!--END_MODULE MICROPHONE-->
 
-        <!--BEGIN_MODULE CONTACTS-->
+        <!--BEGIN_MODULE CONTACTS--><!--
         <js-module name="Diagnostic_Contacts" src="www/android/diagnostic.contacts.js">
             <merges target="cordova.plugins.diagnostic.contacts" />
         </js-module>
-        <!--END_MODULE CONTACTS-->
+        --><!--END_MODULE CONTACTS-->
 
-        <!--BEGIN_MODULE CALENDAR-->
+        <!--BEGIN_MODULE CALENDAR--><!--
         <js-module name="Diagnostic_Calendar" src="www/android/diagnostic.calendar.js">
             <merges target="cordova.plugins.diagnostic.calendar" />
         </js-module>
-        <!--END_MODULE CALENDAR-->
+        --><!--END_MODULE CALENDAR-->
 
-        <!--BEGIN_MODULE NFC-->
+        <!--BEGIN_MODULE NFC--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_NFC" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_NFC"/>
@@ -405,9 +391,9 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_NFC.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE NFC-->
+        --><!--END_MODULE NFC-->
 
-        <!--BEGIN_MODULE EXTERNAL_STORAGE-->
+        <!--BEGIN_MODULE EXTERNAL_STORAGE--><!--
         <config-file target="config.xml" parent="/*">
             <feature name="Diagnostic_External_Storage" >
                 <param name="android-package" value="cordova.plugins.Diagnostic_External_Storage"/>
@@ -420,92 +406,6 @@
         </js-module>
 
         <source-file src="src/android/Diagnostic_External_Storage.java" target-dir="src/cordova/plugins" />
-        <!--END_MODULE EXTERNAL_STORAGE-->
-    </platform>
-
-    <platform name="windows">
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic" >
-                <param name="windows-package" value="cordova.plugins.Diagnostic"/>
-            </feature>
-        </config-file>
-
-        <js-module src="www/windows/diagnostic.js" name="Diagnostic">
-            <merges target="cordova.plugins.diagnostic" />
-        </js-module>
-
-        <js-module src="src/windows/diagnosticProxy.js" name="diagnosticProxy">
-            <merges target="" />
-        </js-module>
-
-        <!--BEGIN_MODULE LOCATION-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Location" >
-                <param name="windows-package" value="cordova.plugins.Diagnostic_Location"/>
-            </feature>
-        </config-file>
-
-        <js-module src="www/windows/diagnostic.location.js" name="Diagnostic_Location">
-            <merges target="cordova.plugins.diagnostic.location" />
-        </js-module>
-
-        <js-module src="src/windows/diagnosticProxy.location.js" name="diagnosticProxy.location">
-            <merges target="" />
-        </js-module>
-        <!--END_MODULE LOCATION-->
-
-        <!--BEGIN_MODULE BLUETOOTH-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Bluetooth" >
-                <param name="windows-package" value="cordova.plugins.Diagnostic_Bluetooth"/>
-            </feature>
-        </config-file>
-
-        <js-module src="www/windows/diagnostic.bluetooth.js" name="Diagnostic_Bluetooth">
-            <merges target="cordova.plugins.diagnostic.bluetooth" />
-        </js-module>
-
-        <js-module src="src/windows/diagnosticProxy.bluetooth.js" name="diagnosticProxy.bluetooth">
-            <merges target="" />
-        </js-module>
-        <!--END_MODULE BLUETOOTH-->
-
-        <!--BEGIN_MODULE WIFI-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Wifi" >
-                <param name="windows-package" value="cordova.plugins.Diagnostic_Wifi"/>
-            </feature>
-        </config-file>
-
-        <js-module src="www/windows/diagnostic.wifi.js" name="Diagnostic_Wifi">
-            <merges target="cordova.plugins.diagnostic.wifi" />
-        </js-module>
-
-        <js-module src="src/windows/diagnosticProxy.wifi.js" name="diagnosticProxy.wifi">
-            <merges target="" />
-        </js-module>
-        <!--END_MODULE WIFI-->
-
-        <!--BEGIN_MODULE CAMERA-->
-        <config-file target="config.xml" parent="/*">
-            <feature name="Diagnostic_Camera" >
-                <param name="windows-package" value="cordova.plugins.Diagnostic_Camera"/>
-            </feature>
-        </config-file>
-
-        <js-module src="www/windows/diagnostic.camera.js" name="Diagnostic_Camera">
-            <merges target="cordova.plugins.diagnostic.camera" />
-        </js-module>
-
-        <js-module src="src/windows/diagnosticProxy.camera.js" name="diagnosticProxy.camera">
-            <merges target="" />
-        </js-module>
-        <!--END_MODULE CAMERA-->
-
-        <!--BEGIN_MODULE ACTIVITY_RECOGNITION-->
-        <config-file parent="/*" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-        </config-file>
-        <!--END_MODULE BLUETOOTH-->
+        --><!--END_MODULE EXTERNAL_STORAGE-->
     </platform>
 </plugin>

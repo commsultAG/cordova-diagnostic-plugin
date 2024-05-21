@@ -37,6 +37,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,7 +113,7 @@ public class Diagnostic_External_Storage extends CordovaPlugin{
      * @return                  True if the action was valid, false if not.
      */
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        currentContext = callbackContext;
+        Diagnostic.instance.currentContext = currentContext = callbackContext;
 
         try {
             if(action.equals("getExternalSdCardDetails")) {
@@ -136,11 +138,15 @@ public class Diagnostic_External_Storage extends CordovaPlugin{
      ***********/
 
     protected void getExternalSdCardDetails() throws Exception{
-        String permission = diagnostic.permissionsMap.get(externalStoragePermission);
-        if (diagnostic.hasPermission(permission)) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             _getExternalSdCardDetails();
         } else {
-            diagnostic.requestRuntimePermission(permission, Diagnostic.GET_EXTERNAL_SD_CARD_DETAILS_PERMISSION_REQUEST);
+            String permission = diagnostic.permissionsMap.get(externalStoragePermission);
+            if (diagnostic.hasRuntimePermission(permission)) {
+                _getExternalSdCardDetails();
+            } else {
+                diagnostic.requestRuntimePermission(permission, Diagnostic.GET_EXTERNAL_SD_CARD_DETAILS_PERMISSION_REQUEST);
+            }
         }
     }
 
@@ -153,10 +159,10 @@ public class Diagnostic_External_Storage extends CordovaPlugin{
             String directory = storageDirectories[i];
             File f = new File(directory);
             JSONObject detail = new JSONObject();
-            if(f.canRead()){
+            if(checkCanRead(f)){
                 detail.put("path", directory);
                 detail.put("filePath", "file://"+directory);
-                detail.put("canWrite", f.canWrite());
+                detail.put("canWrite", checkCanWrite(f));
                 detail.put("freeSpace", getFreeSpaceInBytes(directory));
                 if(directory.contains("Android")){
                     detail.put("type", "application");
@@ -269,5 +275,65 @@ public class Diagnostic_External_Storage extends CordovaPlugin{
 
         return storageDirectories;
     }
+
+    /**
+     * workaround to check if on a specific directory really couldn't read
+     * @param directory the directory to check
+     * @return the result of the validation
+     */
+    protected boolean checkCanRead(File directory) {
+        boolean valid = false;
+        if(directory.canRead()) {
+            valid = true;
+        } else {
+            valid = canCreateFileOnDirectory(directory);
+        }
+        return valid;
+    }
+
+    /**
+     * workaround to check if on a specific directory really couldn't write
+     * @param directory the directory to check
+     * @return the result of the validation
+     */
+    protected boolean checkCanWrite(File directory) {
+        boolean valid = false;
+        if(directory.canWrite()) {
+            valid = true;
+        } else {
+            valid = canCreateFileOnDirectory(directory);
+        }
+        return valid;
+    }
+
+    /**
+     * check if a file could created on a specific directory
+     * @param directory
+     * @return
+     */
+    protected boolean canCreateFileOnDirectory(File directory) {
+        FileOutputStream os = null;
+        boolean valid = false;
+        try {
+            try {
+                File createTestFile = new File(directory, "createWriteTest");
+                os = new FileOutputStream(createTestFile);
+                os.write(new byte[8 * 1024]);
+                createTestFile.deleteOnExit();
+                valid = true;
+            } catch (Exception e) {
+                //e.printStrackTrace();
+                valid = false;
+            } finally {
+                if(os != null) {
+                    os.close();
+                }
+            }
+        } catch (IOException e) {
+            valid = false;
+        }
+        return valid;
+    }
+
 
 }
