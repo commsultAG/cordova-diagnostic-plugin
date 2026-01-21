@@ -723,7 +723,7 @@ public class Diagnostic extends CordovaPlugin{
                         int mPendingIntentId = 223344;
                         PendingIntent mPendingIntent = PendingIntent
                                 .getActivity(c, mPendingIntentId, mStartActivity,
-                                        PendingIntent.FLAG_CANCEL_CURRENT);
+                                        PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
                         AlarmManager mgr = (AlarmManager) c.getSystemService(Context.ALARM_SERVICE);
                         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
                         Log.i(TAG,"Killing application for cold restart");
